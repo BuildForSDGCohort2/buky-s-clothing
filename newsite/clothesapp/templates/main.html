@@ -1,0 +1,346 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+
+      
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+
+    function getCookie(name){
+      //Split cookie string and get all individual name=value pairs in an array
+      var cookieArr = document.cookie.split(";");
+      // Loop through the array elements
+      for(var i=0; i < cookieArr.length; i++){
+        var cookiePair = cookieArr[i].split("=");
+        /*Removing whitespace at the beginning of the cookie name and 
+        compare it with the given string*/
+        if(name == cookiePair[0].trim()){
+          //Decode the cookie value and return
+          return decodeURIComponent(cookiePair[1]);
+
+        }
+
+        
+      }
+      //Return null if not found
+      return null;
+    }
+
+    var cart = JSON.parse(getCookie('cart'))
+    if(cart == undefined){
+      cart = {}
+      console.log('Cart was created', cart)
+      document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+
+    }
+    console.log('Cart:', cart)
+    </script>
+    
+    <title>{% block title%}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+  {%include 'navbar.html' %}
+  <style>
+    #top2{
+      margin-top: 48%;
+      margin-right: 50%;
+      
+    }
+    
+    #top2:hover{
+      color: goldenrod;
+
+    }
+    #top{
+      margin-top: 43%;
+    }
+    .col-lg-4 img{
+      filter:grayscale(100%);
+      cursor:pointer;
+    }
+    .col-lg-4 img:hover{
+      filter:grayscale(0);
+
+
+    }
+    #test{
+      padding-top: 8%;
+    }
+    #width{
+      width:30%;
+      background-color: yellow;
+      font-weight: bolder;
+      
+   
+    }
+    footer{
+      width:100%;
+    }
+   
+    .fa.fa-arrow-right{
+      padding-top: 3%;
+      font-weight: bolder;
+      color: yellow;
+      font-size:xx-large;
+      
+    }
+    hr.light{
+        
+      border-top: 2px solid #d5d5d5;
+      width:75%;
+      margin-top:.8rem;
+      margin-bottom: 1rem;
+  }
+    .text-center{
+      background-color: #3f3f3f;
+        color:#d5d5d5;
+        padding-top: 2rem;
+    }
+
+
+
+     .cap h1{
+      margin-top: 0%;
+      text-align: center;
+      
+    }
+    .cap{
+      
+    }
+    .col-lg-4 img{
+      width:70%;
+    }
+    .fa.fa-quote-left{
+      font-size: 34px;
+      color:yellow;
+    }
+    .fa.fa-star{
+      color:yellow;
+    }
+  .testimonial{
+    padding-top: 10px;
+
+
+  }
+  .testimonial .col-3{
+    text-align:center;
+    padding:40px 20px;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:transform 0.5s;
+
+  }.testimonial img{
+    
+
+    border-radius: 50%;
+  }
+  .testimonial .col-3:hover{
+    transform:translateY(-30px);
+  }
+
+    #beauty{
+      border-radius: 5%;
+      background-color: yellow;
+      font-weight: xx-large;
+      width:30%;
+      margin-top: 5%;
+      transition:transform 0.6s;
+    }
+    #beauty:hover{
+      background-color: goldenrod;
+    }
+    .img-fluid img{
+      width:100%;
+    }
+  
+   .categories{
+     margin: 70px 0;
+   }
+   .ratings.fa{
+     color:yellow;
+   }
+   .col-4{
+     transition:transform 0.5s; 
+   }
+   .col-4:hover{
+     transform:translateY(-50px);
+   }
+   .col-4 img{
+     width:100%;
+   }
+   .small-container{
+     max-width:1080px;
+     margin:auto;
+     padding-left: 25px;
+     padding-right: 25px;
+   }
+    
+    .hidden{
+      display: none!important;
+    }
+    .row{
+      margin-top:5%;
+    }
+    body{
+      font-family: Agency FB;
+    }
+    .form-field{
+      width:250px;
+      display:inline-block;
+      padding:5px;
+    }
+    
+    .box-element{
+      background-color: #fff;
+      box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+      border-radius: 4px;
+      padding:10px;
+      
+    }
+    .quantity{
+      display: inline-block;
+      font-weight: 700;
+      padding-right: 10px;
+    }
+    .chg-quantity{
+      width:12px;
+      cursor:pointer;
+      display:block;
+    }
+    .table{
+      background-color: #ececec;
+      
+    }
+    .btn-outline-dark{
+      margin-top: 4%;
+      margin-bottom: 3%;
+    }
+    .row-image{
+      width:100px;
+    }
+    .cart-row{
+      display:flex;
+      align-items: flex-stretch;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    
+    .caption{
+    position:absolute;
+    top:40%;
+    transform: translateY(-50%);
+
+
+    }
+
+    .container{
+      min-height: 100vh;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      
+  }
+  h1{
+      color: beige;
+  }
+  #hero{
+      background-image: url({% static 'images/array.jpg' %});
+      background-size: cover;
+      background-position: top center;
+      position: relative;
+      z-index: 1;
+  }
+  #hero::after{
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      background-color: black;
+      opacity:.4;
+      z-index: -1;
+  }
+    body{
+      background-color: white;
+
+    }
+    #cart-icon{
+      font-size: x-large;
+      height:40px;
+      border-radius: 50%;
+      margin:5px;
+      margin-left: 20px;
+      margin-top:10%;
+    }
+     
+
+    #cart-total{
+      color:red;
+      font-size: x-large;
+      font-weight: 90%;
+      height:60px;
+
+    }
+    .btn-warning{
+      font-size: large;
+      background-color: yellow;
+    }
+    
+    #logo-icon{
+      font-size: large;
+      font-weight: 30%;
+      height:70px;
+      border-radius: 50%;
+      float:inline-end;
+      margin-left: 2%;
+      padding: 10px 10px 0 10px;
+
+
+    }
+    
+  </style>
+  
+  
+<body>
+  {% block body %}
+    
+  {% endblock %}
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>

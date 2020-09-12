@@ -1,0 +1,49 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class = "container-fluid" style="float:left;">
+    <a class = "navbar-brand" href = "#" style="float:left;"><img id="logo-icon"src= "{% static 'images/logo2.png' %}" ></a>
+  <a class="navbar-brand" href="#"></a>
+  <div class="name" style="float:left;">
+    <a class="navbar-brand" href="#" style="font-family:Agency FB; font-size:x-large; float:left;"></a>
+</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'store' %}" id="top" style="font-family:Agency FB; font-size:x-large;">Store <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'checkout' %}"  id="top2"style="font-family:Agency FB; font-size:large;">Checkout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'checkout' %}" id="top2" style="font-family:Agency FB; font-size:large;">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'checkout' %}" id="top2" style="font-family:Agency FB; font-size:large; margin-top:64%;">Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'checkout' %}" id="top2" style="font-family:Agency FB; font-size:large;">Services</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="font-family:Agency FB; font-size:x-large;">Disabled</a>
+        </li>-->
+      </ul>
+      <div class="form-inline my-2 my-lg-0" style="font-family: Agency FB;">
+        <a href="#" class="btn btn-warning" style="font-size: 80%; margin-top:10%;">Login</a>
+        <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.jpg' %}"></a>
+        <p id="cart-total" style="font-family: cursive; font-size:x-small;">{{cartItems}}</p>
+
+      </div>
+
+      
+      <!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>-->
+    </div>
+  </nav>
+
+  
